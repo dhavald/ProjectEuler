@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 function isPrime($num)
 {
@@ -132,4 +132,29 @@ function getLowestTerms($numerator, $denominator)
 	$numerator /= $product;
 	$denominator /= $product;
 	return array($numerator => $denominator);
+}
+
+function getFactorial($num = 1)
+{
+	return $num == 1 || $num == 0 ? 1 : $num * getFactorial($num - 1);
+}
+
+function getDigits($num = 1)
+{
+	$digits = array();
+	while ($num > 1) {
+		$digits[] = $num % 10;
+		$num /= 10;
+	}
+	return $digits;
+}
+
+function isCuriousNumber($num = 1)
+{
+	$digits = getDigits($num);
+	$factorialSum = 0;
+	foreach ($digits as $digit) {
+		$factorialSum += getFactorial($digit);
+	}
+	return count($digits) != 1 && $factorialSum == $num;
 }
