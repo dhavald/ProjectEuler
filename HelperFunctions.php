@@ -2,6 +2,9 @@
 
 function isPrime($num)
 {
+	if ($num < 2) {
+		return false;
+	}
 	$prime = true;
 	for ($i=2; $i*$i <= $num; $i++) {
 		if ($num % $i == 0) {
@@ -10,6 +13,25 @@ function isPrime($num)
 		}
 	}
 	return $prime;
+}
+
+function getPrimesBelow($limit = 999999)
+{
+	$primes = array();
+	foreach (range(2, $limit) as $num) {
+		$primes[$num] = true;
+	}
+	for ($i = 2; $i*$i <= $limit; $i++) {
+		if (!isset($primes[$i])) {
+			continue;
+		}
+		for ($j = $limit; $j > $i; $j--) {
+			if (isset($primes[$j]) && $j % $i == 0) {
+				unset($primes[$j]);
+			}
+		}
+	}
+	return array_keys($primes);
 }
 
 function getFactors($num)
@@ -157,4 +179,17 @@ function isCuriousNumber($num = 1)
 		$factorialSum += getFactorial($digit);
 	}
 	return count($digits) != 1 && $factorialSum == $num;
+}
+
+function getRotations($str = "")
+{
+	$len = strlen($str);
+	$rotations = array();
+	for ($i = 0; $i < $len; $i++) {
+		$prefix = substr($str, 0, $i);
+		$char = $str[$i];
+		$postfix = substr($str, $i);
+		$rotations[] = $char.$postfix.$prefix;
+	}
+	return $rotations;
 }
