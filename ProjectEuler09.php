@@ -1,11 +1,9 @@
-﻿<?php 
+﻿<?php
 
 // A Pythagorean triplet is a set of three natural numbers, a  b  c, for which, a^2 + b^2 = c^2
 // For example, 3^2 + 4^2 = 9 + 16 = 25 = 5^2.
 // There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc.
 
-require_once(dirname(__FILE__) . '/../bootstrap.php');
-ini_set('memory_limit', '-1');
 
 $start = microtime(true);
 $ans = getPythagoreanTriplet(1000);

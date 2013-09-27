@@ -4,7 +4,6 @@
 // Find the largest palindrome made from the product of two 3-digit numbers.
 
 require_once(dirname(__FILE__) . '/HelperFunctions.php');
-ini_set('memory_limit', '-1');
 
 $start = microtime(true);
 $largestPalindrome = getLargestPalindrome(3);

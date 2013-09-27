@@ -1,10 +1,9 @@
-﻿<?php 
+﻿<?php
 
 // 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 // What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
-require_once(dirname(__FILE__) . '/../bootstrap.php');
-ini_set('memory_limit', '-1');
+require_once(dirname(__FILE__) . '/HelperFunctions.php');
 
 $start = microtime(true);
 $lcm = getLCM(20);
@@ -45,18 +44,6 @@ function getPrimeFactorCounts($num)
         }
     }
     return $factors;
-}
-
-function isPrime($num)
-{
-    $prime = true;
-    for($i=2; $i<$num; $i++) {
-        if($num % $i == 0) {
-            $prime = false;
-            break;
-        }
-    }
-    return $prime;
 }
 
 function getProduct($occurences = array())
