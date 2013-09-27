@@ -85,6 +85,20 @@ function permute($str)
 	return $permutations;
 }
 
+function isPalindrome($str)
+{
+	$str = (string) $str;
+	$len = strlen($str);
+	if ($len == 1) {
+		return true;
+	} elseif ($len == 2) {
+		return $str[0] == $str[$len - 1];
+	} else {
+		$remaining = substr($str, 1, $len - 2);
+		return $str[0] == $str[$len - 1] && (empty($remaining) || isPalindrome($remaining));
+	}
+}
+
 function quickSort($inputWords)
 {
 	$count = count($inputWords);
@@ -169,6 +183,16 @@ function getDigits($num = 1)
 		$num /= 10;
 	}
 	return $digits;
+}
+
+function toBinary($num)
+{
+	$binary = "";
+	do {
+		$binary = ((string) $num % 2) . $binary;
+		$num /= 2;
+	} while($num > 1);
+	return $binary;
 }
 
 function isCuriousNumber($num = 1)
