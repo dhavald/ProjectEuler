@@ -1,9 +1,9 @@
-﻿<?php 
+﻿<?php
 
 // A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 (91 * 99).
 // Find the largest palindrome made from the product of two 3-digit numbers.
 
-require_once(dirname(__FILE__) . '/../bootstrap.php');
+require_once(dirname(__FILE__) . '/HelperFunctions.php');
 ini_set('memory_limit', '-1');
 
 $start = microtime(true);
@@ -31,9 +31,4 @@ function getLargestPalindrome($numDigits)
         }
     }
     return $largestPalindrome;
-}
-
-function isPalindrome($num)
-{
-    return ($num == strrev($num));
 }
