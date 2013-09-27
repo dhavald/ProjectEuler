@@ -4,9 +4,11 @@ function isPrime($num)
 {
 	if ($num < 2) {
 		return false;
+	} elseif ($num % 2 == 0) {
+		return false;
 	}
 	$prime = true;
-	for ($i=2; $i*$i <= $num; $i++) {
+	for ($i=3; $i*$i <= $num; $i+=2) {
 		if ($num % $i == 0) {
 			$prime = false;
 			break;
