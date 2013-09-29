@@ -209,11 +209,14 @@ function isCuriousNumber($num = 1)
 
 function isPandigital($num, $start = 0, $end = 9)
 {
+	if (strlen($num) != ($end-$start+1)) {
+		return false;
+	}
 	$toMatch = implode("", range($start, $end));
 	$numArr = str_split($num);
 	sort($numArr);
 	$sortedNum = implode("", $numArr);
-	return strlen($sortedNum) == ($end-$start+1) && $sortedNum == $toMatch;
+	return $sortedNum == $toMatch;
 }
 
 function getRotations($str = "")
