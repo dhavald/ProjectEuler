@@ -207,6 +207,15 @@ function isCuriousNumber($num = 1)
 	return count($digits) != 1 && $factorialSum == $num;
 }
 
+function isPandigital($num, $start = 0, $end = 9)
+{
+	$toMatch = implode("", range($start, $end));
+	$numArr = str_split($num);
+	sort($numArr);
+	$sortedNum = implode("", $numArr);
+	return strlen($sortedNum) == ($end-$start+1) && $sortedNum == $toMatch;
+}
+
 function getRotations($str = "")
 {
 	$len = strlen($str);
