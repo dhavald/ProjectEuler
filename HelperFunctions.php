@@ -4,17 +4,20 @@ function isPrime($num)
 {
 	if ($num < 2) {
 		return false;
-	} elseif ($num % 2 == 0) {
+	} elseif ($num == 2 || $num == 3 || $num == 5) {
+		return true;
+	} elseif ($num % 2 == 0 || $num % 3 == 0 || $num % 5 == 0) {
 		return false;
 	}
-	$prime = true;
-	for ($i=3; $i*$i <= $num; $i+=2) {
+
+	$sqrt = intval(sqrt($num));
+
+	for ($i=3; $i <= $sqrt; $i+=2) {
 		if ($num % $i == 0) {
-			$prime = false;
-			break;
+			return false;
 		}
 	}
-	return $prime;
+	return true;
 }
 
 function getPrimesBelow($limit = 999999)
@@ -212,11 +215,15 @@ function isPandigital($num, $start = 0, $end = 9)
 	if (strlen($num) != ($end-$start+1)) {
 		return false;
 	}
-	$toMatch = implode("", range($start, $end));
 	$numArr = str_split($num);
 	sort($numArr);
-	$sortedNum = implode("", $numArr);
-	return $sortedNum == $toMatch;
+	return implode("", range($start, $end)) == implode("", $numArr);
+}
+
+function generatePandigitals($digits, $zeroless = true)
+{
+	$digitsArr = $zeroless? range(1, $digits) : range(0, $digits);
+	return permute(implode("", $digitsArr));
 }
 
 function getRotations($str = "")
