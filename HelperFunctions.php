@@ -238,3 +238,17 @@ function getRotations($str = "")
 	}
 	return $rotations;
 }
+
+function getWordValue($word = "")
+{
+	$chars = range('A', 'Z');
+	$ints = range(1, count($chars));
+	$intValues = array_combine($chars, $ints);
+	$wordVal = 0;
+	foreach (str_split($word) as $char) {
+		if (isset($intValues[strtoupper($char)])) {
+			$wordVal += $intValues[strtoupper($char)];
+		}
+	}
+	return $wordVal;
+}
