@@ -220,7 +220,7 @@ function isPandigital($num, $start = 0, $end = 9)
 	return implode("", range($start, $end)) == implode("", $numArr);
 }
 
-function generatePandigitals($digits, $zeroless = true)
+function generatePandigitals($digits = 9, $zeroless = true)
 {
 	$digitsArr = $zeroless? range(1, $digits) : range(0, $digits);
 	return permute(implode("", $digitsArr));
