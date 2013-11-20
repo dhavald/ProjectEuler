@@ -180,6 +180,26 @@ function getFactorial($num = 1)
 	return $num == 1 || $num == 0 ? 1 : $num * getFactorial($num - 1);
 }
 
+function strSum($a, $b)
+{
+	$arr1 = str_split($a);
+	$arr2 = str_split($b);
+	$sum = '';
+	$carry = 0;
+	while (!empty($arr1) || !empty($arr2)) {
+		$lastDigit1 = !empty($arr1)? array_pop($arr1) : 0;
+		$lastDigit2 = !empty($arr2)? array_pop($arr2) : 0;
+		$sumLastDigits = $lastDigit1 + $lastDigit2 + $carry;
+		$carry = 0;
+		if ($sumLastDigits > 9) {
+			$carry = 1;
+			$sumLastDigits -= 10;
+		}
+		$sum = $sumLastDigits . $sum;
+	}
+	return $sum;
+}
+
 function getDigits($num = 1)
 {
 	$digits = array();
