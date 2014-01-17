@@ -31,7 +31,7 @@ function getCircularPrimes($limit = 999999)
 
 function getCircularPrimes2($limit = 999999)
 {
-	$primes = getPrimesBelow($limit);
+	$primes = getPrimes(2, $limit);
 	$circularPrimes = array();
 	foreach ($primes as $prime) {
 		$rotations = getRotations($prime);

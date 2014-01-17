@@ -20,17 +20,14 @@ function isPrime($num)
 	return true;
 }
 
-function getPrimesBelow($limit = 999999)
+function getPrimes($start = 2, $end = 999999)
 {
 	$primes = array();
-	foreach (range(2, $limit) as $num) {
+	foreach (range($start, $end) as $num) {
 		$primes[$num] = true;
 	}
-	for ($i = 2; $i*$i <= $limit; $i++) {
-		if (!isset($primes[$i])) {
-			continue;
-		}
-		for ($j = $limit; $j > $i; $j--) {
+	for ($i = 2; $i*$i <= $end; $i++) {
+		for ($j = $end; $j > $i; $j--) {
 			if (isset($primes[$j]) && $j % $i == 0) {
 				unset($primes[$j]);
 			}

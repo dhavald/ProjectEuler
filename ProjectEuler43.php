@@ -41,7 +41,7 @@ function getSubstringDivisiblePandigitalNumbers()
 	global $primes;
 	$substringDivisibleNumbers = array();
 	$pandigitals = generatePandigitals(9, false);
-	$primes = getPrimesBelow(50);
+	$primes = getPrimes(2, 50);
 	foreach ($pandigitals as $pandigital) {
 		if (isSubstringDivisible($pandigital)) {
 			$substringDivisibleNumbers[] = $pandigital;

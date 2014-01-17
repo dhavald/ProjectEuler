@@ -46,7 +46,7 @@ function proveGoldbachWrong($start = 7)
 {
 	global $primes;
 	$number = $start;
-	$primes = getPrimesBelow(9999);
+	$primes = getPrimes(2, 9999);
 	$found = false;
 	while (!$found) {
 		$number += 2;
