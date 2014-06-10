@@ -87,6 +87,16 @@ function permute($str)
 	return $permutations;
 }
 
+function ncr($n = 2, $r = 1) {
+	if ($r > $n / 2) {
+		$r = $n - $r;
+	}
+	$nFact = getFactorial($n);
+	$rFact = getFactorial($r);
+	$nrFact = getFactorial($n-$r);
+	return ($nFact) / ($rFact * $nrFact);
+}
+
 function isPalindrome($str)
 {
 	$str = (string) $str;
@@ -174,7 +184,20 @@ function getLowestTerms($numerator, $denominator)
 
 function getFactorial($num = 1)
 {
+	// if xdebug is enabled, make sure to set xdebug.max_nesting_level to accomodate recursion or use the linear factorial function below
 	return $num == 1 || $num == 0 ? 1 : $num * getFactorial($num - 1);
+}
+
+function getFactorialLinear($num = 1)
+{
+	if ($num < 0) {
+		return 0;
+	}
+	$factorial = 1;
+	for ($i = 2; $i <= $num; $i++) {
+		$factorial *= $i;
+	}
+	return $factorial;
 }
 
 function strSum($a, $b)
